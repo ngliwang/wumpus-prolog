@@ -91,6 +91,8 @@ neighbors_cost(C) :- neighbors(X, Y), sum_cost(X, Y, C).
 % Cost predicates
 sum_cost(X, Y, C) :- findall(Ci, cost(X, Y, Ci), Cs), sum_list(Cs, C).
 
+
+% cost is similar to a ranking system of the rooms
 cost(X, Y, C) :- hunter(_, _, Di), direction(X, Y, D), Di \== D, C is 1.
 cost(X, Y, C) :- visited(X, Y), has_gold(yes),        C is -5.
 cost(X, Y, C) :- visited(X, Y), has_gold(no),         C is +5.
